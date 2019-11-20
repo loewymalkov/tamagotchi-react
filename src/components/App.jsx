@@ -8,14 +8,31 @@ import { Switch, Route } from 'react-router-dom';
 class App extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       // tamagotchis levels?
+      alive: true
     };
     // bind the methods 
+    this.handleFeedClick = this.handleFeedClick.bind(this);
+    this.handleSleepClick = this.handleSleepClick.bind(this);
+    this.handlePlayClick = this.handlePlayClick.bind(this);
+  }
+  // methods
+  handleFeedClick(index) {
+    [index].hunger ++;
   }
 
-  // methods
+  handleSleepClick(index) {
+    [index].energy ++;
+  }
+
+  handlePlayClick(index) {
+    [index].boredom ++;
+  }
+  
+
+
 
   render() {
     return (
@@ -24,8 +41,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/tamagotchi' render={() =>
-          <Tamagotchi />}  />
+            <Tamagotchi />}  />
         </Switch>
+        <NewTamagotchi />
       </div>
     );
   }

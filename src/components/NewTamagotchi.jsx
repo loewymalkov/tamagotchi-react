@@ -20,7 +20,7 @@ function NewTamagotchi(props) {
   );
 }
 
-Tamagotchi.propTypes = {
+NewTamagotchi.propTypes = {
   onNewTamagotchiCreation: PropTypes.func
 };
 

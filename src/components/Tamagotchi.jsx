@@ -22,7 +22,7 @@ function Tamagotchi (props) {
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
             <span className="card-title">Hunger level</span>
-            <p><button onClick={handleFeedClick}>Feed!</button></p>
+            <p><button className="card-body black-text" onClick={handleFeedClick}>Feed!</button></p>
             <span >{props.hunger}</span>
           </div>
         </div>
@@ -32,7 +32,7 @@ function Tamagotchi (props) {
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
             <span className="card-title">Energy level</span>
-            <p><button onClick={handleSleepClick}>Put to Sleep!</button></p>
+            <p><button className="card-body black-text" onClick={handleSleepClick}>Put to Sleep!</button></p>
             <span >{props.energy}</span>
           </div>
         </div>
@@ -42,7 +42,7 @@ function Tamagotchi (props) {
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
             <span className="card-title">Boredom level</span>
-            <p><button onClick={handleFeedClick}>Play!</button></p>
+            <p><button className="card-body black-text" onClick={handlePlayClick}>Play!</button></p>
             <span >{props.boredom}</span>
           </div>
         </div>
@@ -51,14 +51,14 @@ function Tamagotchi (props) {
   );
 }
 
-  Tamagotchi.propTypes = {
-    hunger: PropTypes.number,
-    energy: PropTypes.number,
-    boredom: PropTypes.number,
-    feed: PropTypes.func,
-    sleep: PropTypes.func,
-    play: PropTypes.func,
-    index: PropTypes.number
-  };
+Tamagotchi.propTypes = {
+  hunger: PropTypes.number,
+  energy: PropTypes.number,
+  boredom: PropTypes.number,
+  feed: PropTypes.func,
+  sleep: PropTypes.func,
+  play: PropTypes.func,
+  index: PropTypes.number
+};
 
-  export default Tamagotchi;
+export default Tamagotchi;
