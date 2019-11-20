@@ -15,11 +15,12 @@ A tamagotchi web app built in React. User can feed, put to sleep and keep track 
 
 ## SPECS
 
-- user can see the current level of tamagotchis food, sleep, etc
-- user can feed, put to sleep
-- user will be alerted if food or sleep levels are too low
+- user can see the current level of tamagotchis hunger, energy, boredom
+- tamagotchis levels go down on a timer
+- user can feed, put to sleep and pet to replenish levels with buttons
+- user actions will be set to a timer
+- user will be alerted if hunger, energy or boredom levels are too low
 - user will be alerted if tamagotchi has ran away
-
 
 ## TECHNOLOGIES
 
