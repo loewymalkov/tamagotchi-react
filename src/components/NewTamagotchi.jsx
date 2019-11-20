@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
 function NewTamagotchi(props) {
   let _hunger = 10;
@@ -8,7 +9,7 @@ function NewTamagotchi(props) {
 
   function handleNewTamagotchiSubmission(event) {
     event.preventDefault();
-    props.onNewTamagotchiCreation({hunger: _hunger, energy: _energy, boredom:  _boredom});
+    props.onNewTamagotchiCreation({hunger: _hunger, energy: _energy, boredom:  _boredom, id: v4()});
   }
 
   return  (

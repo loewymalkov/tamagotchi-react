@@ -1,6 +1,6 @@
 import React from 'react';
 import NewTamagotchi from './NewTamagotchi';
-import Tamagotchi from './Tamagotchi';
+import TamagotchiList from './TamagotchiList';
 import Home from './Home';
 import Header from './Header';
 import { Switch, Route } from 'react-router-dom';
@@ -10,29 +10,39 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // tamagotchis levels?
-      alive: true
+      // tamagotchi list
+      masterTamagotchiList: [],
     };
     // bind the methods 
+    this.handleNewTamagotchiToList = this.handleNewTamagotchiToList.bind(this);
     this.handleFeedClick = this.handleFeedClick.bind(this);
     this.handleSleepClick = this.handleSleepClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
   }
   // methods
   handleFeedClick(index) {
-    [index].hunger ++;
+    var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newMasterTamagotchiList[index].hunger ++;
+    this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
 
   handleSleepClick(index) {
-    [index].energy ++;
+    var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newMasterTamagotchiList[index].energy ++;
+    this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
 
   handlePlayClick(index) {
-    [index].boredom ++;
+    var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newMasterTamagotchiList[index].boredom ++;
+    this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
   
-
-
+  handleNewTamagotchiToList(newTamagotchi) {
+    var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newMasterTamagotchiList.push(newTamagotchi);
+    this.setState({ masterTamagotchiList: newMasterTamagotchiList});
+  }
 
   render() {
     return (
@@ -41,9 +51,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/tamagotchi' render={() =>
-            <Tamagotchi />}  />
+            <TamagotchiList tamagotchiList= {this.state.masterTamagotchiList} feed={this.handleFeedClick} sleep={this.handleSleepClick} play={this.handlePlayClick} />}  />
         </Switch>
-        <NewTamagotchi />
+        <NewTamagotchi onNewTamagotchiCreation= {this.handleNewTamagotchiToList}/>
       </div>
     );
   }
