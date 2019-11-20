@@ -13,6 +13,7 @@ function TamagotchiList(props) {
           feed={props.feed}
           sleep={props.sleep}
           play={props.play}
+          interval={props.interval}
           index={index}
           key={create.id} />
       )}
@@ -25,6 +26,7 @@ TamagotchiList.propTypes = {
   feed: PropTypes.func,
   sleep: PropTypes.func,
   play: PropTypes.func,
+  interval: PropTypes.func,
   index: PropTypes.number
 };
 

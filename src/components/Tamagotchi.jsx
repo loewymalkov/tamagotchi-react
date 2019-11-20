@@ -16,6 +16,10 @@ function Tamagotchi (props) {
     props.play(props.index);
   }
 
+  setInterval(() => {
+    props.interval(props.index);
+  }, 1000);
+
   return (
     <div className="row">
       <div className="col s12 m4">
@@ -58,6 +62,7 @@ Tamagotchi.propTypes = {
   feed: PropTypes.func,
   sleep: PropTypes.func,
   play: PropTypes.func,
+  interval: PropTypes.func,
   index: PropTypes.number
 };
 

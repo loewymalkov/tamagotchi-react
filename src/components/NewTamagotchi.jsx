@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 
+
 function NewTamagotchi(props) {
-  let _hunger = 10;
+  let _hunger = 1;
   let _energy = 10;
-  let _boredom = 10;
+  let _boredom = 1;
 
   function handleNewTamagotchiSubmission(event) {
     event.preventDefault();

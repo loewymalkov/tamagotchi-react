@@ -11,18 +11,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       // tamagotchi list
-      masterTamagotchiList: [],
+      masterTamagotchiList: []
     };
     // bind the methods 
     this.handleNewTamagotchiToList = this.handleNewTamagotchiToList.bind(this);
     this.handleFeedClick = this.handleFeedClick.bind(this);
     this.handleSleepClick = this.handleSleepClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
+    this.setInterval = this.setInterval.bind(this);
   }
   // methods
   handleFeedClick(index) {
     var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-    newMasterTamagotchiList[index].hunger ++;
+    newMasterTamagotchiList[index].hunger --;
     this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
 
@@ -34,6 +35,14 @@ class App extends React.Component {
 
   handlePlayClick(index) {
     var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newMasterTamagotchiList[index].boredom --;
+    this.setState({ masterTamagotchiList: newMasterTamagotchiList});
+  }
+
+  setInterval(index) {
+    var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newMasterTamagotchiList[index].hunger ++;
+    newMasterTamagotchiList[index].energy --;
     newMasterTamagotchiList[index].boredom ++;
     this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
@@ -44,6 +53,8 @@ class App extends React.Component {
     this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
 
+  
+
   render() {
     return (
       <div>
@@ -51,9 +62,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/tamagotchi' render={() =>
-            <TamagotchiList tamagotchiList= {this.state.masterTamagotchiList} feed={this.handleFeedClick} sleep={this.handleSleepClick} play={this.handlePlayClick} />}  />
+            <TamagotchiList tamagotchiList= {this.state.masterTamagotchiList} interval={this.setInterval} feed={this.handleFeedClick} sleep={this.handleSleepClick} play={this.handlePlayClick} />}  />
         </Switch>
-        <NewTamagotchi onNewTamagotchiCreation= {this.handleNewTamagotchiToList}/>
+        <NewTamagotchi onNewTamagotchiCreation= {this.handleNewTamagotchiToList} />
       </div>
     );
   }
