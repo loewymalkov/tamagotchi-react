@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 
 
+
 function NewTamagotchi(props) {
   let _hunger = 1;
   let _energy = 10;

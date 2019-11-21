@@ -16,7 +16,8 @@ function Tamagotchi (props) {
     props.play(props.index);
   }
 
-  setInterval(() => {
+  
+  setTimeout(() => {
     props.interval(props.index);
   }, 1000);
 
