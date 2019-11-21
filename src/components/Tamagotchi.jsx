@@ -17,9 +17,9 @@ function Tamagotchi (props) {
   }
 
   
-  setTimeout(() => {
-    props.interval(props.index);
-  }, 1000);
+  // setTimeout(() => {
+  //   props.interval(props.index);
+  // }, 1000);
 
   return (
     <div className="row">

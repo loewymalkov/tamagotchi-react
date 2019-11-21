@@ -18,7 +18,7 @@ class App extends React.Component {
     this.handleFeedClick = this.handleFeedClick.bind(this);
     this.handleSleepClick = this.handleSleepClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
-    this.setTimeout = this.setTimeout.bind(this);
+    // this.setTimeout = this.setTimeout.bind(this);
   }
   // methods
   handleFeedClick(index) {
@@ -39,11 +39,19 @@ class App extends React.Component {
     this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
 
-  setTimeout(index) {
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(() => 
+      this.setTimeout(),
+    1000
+    );
+  }
+
+  setTimeout() {
+    console.log('here');
     var newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-    newMasterTamagotchiList[index].hunger ++;
-    newMasterTamagotchiList[index].energy --;
-    newMasterTamagotchiList[index].boredom ++;
+    newMasterTamagotchiList[0].hunger ++;
+    newMasterTamagotchiList[0].energy --;
+    newMasterTamagotchiList[0].boredom ++;
     this.setState({ masterTamagotchiList: newMasterTamagotchiList});
   }
   
@@ -62,7 +70,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/tamagotchi' render={() =>
-            <TamagotchiList tamagotchiList= {this.state.masterTamagotchiList} interval={this.setTimeout} feed={this.handleFeedClick} sleep={this.handleSleepClick} play={this.handlePlayClick} />}  />
+            <TamagotchiList tamagotchiList= {this.state.masterTamagotchiList}  feed={this.handleFeedClick} sleep={this.handleSleepClick} play={this.handlePlayClick} />}  />
         </Switch>
         <NewTamagotchi onNewTamagotchiCreation= {this.handleNewTamagotchiToList} />
       </div>
